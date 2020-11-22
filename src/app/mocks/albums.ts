@@ -3,10 +3,10 @@ import { Song } from '../models/song';
 
 export const allAlbums : Array<Album> = [
     { id: 1, name: "Drones", artist: "Muse", price: 200, genre: "Rock", rating: 3, date: "01/01/2020", description: "Rock album by Muse", img: "assets/drones.jpg" },
-    { id: 2, name: "Expectativas", artist: "Bunbury", price: 200, genre: "Rock en espanol", rating: 3, date: "01/01/2020", description: "Rock album by Bunbury", img: "assets/drones.jpg" },
+    { id: 2, name: "Expectativas", artist: "Bunbury", price: 200, genre: "Rock en espanol", rating: 3, date: "01/01/2020", description: "Rock album by Bunbury", img: "assets/expectativas.jpg" },
     { id: 3, name: "Alienigenas de Todo un Siglo", artist: "Tux Lunan", price: 200, genre: "Rock en espanol", rating: 3, date: "01/01/2020", description: "Rock album by Tux Lunan", img: "assets/alien.jpg" },
-    { id: 4, name: "OPUS", artist: "Marc Anthony", price: 200, genre: "Salsa", rating: 3, date: "01/01/2020", description: "Salsa album by Marc Anthony", img: "assets/drones.jpg" },
-    { id: 5, name: "Humbug", artist: "Arctic Monkeys", price: 200, genre: "Alt Rock", rating: 3, date: "01/01/2020", description: "Rock album by Arctic Monkeys", img: "assets/drones.jpg" },
+    { id: 4, name: "OPUS", artist: "Marc Anthony", price: 200, genre: "Salsa", rating: 3, date: "01/01/2020", description: "Salsa album by Marc Anthony", img: "assets/opus.jpg" },
+    { id: 5, name: "Humbug", artist: "Arctic Monkeys", price: 200, genre: "Alt Rock", rating: 3, date: "01/01/2020", description: "Rock album by Arctic Monkeys", img: "assets/humbug.jpg" },
     { id: 6, name: "Contrareloj", artist: "Enanitos Verdes", price: 200, genre: "Rock en espanol", rating: 3, date: "01/01/2020", description: "Rock album by Enanitos Verdes", img: "assets/contrareloj.jpg" },
 ]
 
