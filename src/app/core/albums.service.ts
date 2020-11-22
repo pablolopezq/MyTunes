@@ -52,6 +52,7 @@ export class AlbumsService {
     else {
       this.purchased.push(id);
     }
+    console.log("a")
   }
 
   togglePurchaseSong(id : number) {
@@ -62,5 +63,12 @@ export class AlbumsService {
     else {
       this.purchasedSongs.push(id);
     }
+  }
+
+  setAlbumRating(id : number, newRating : number){
+    const index = this.albums.findIndex(a => a.id === id);
+    console.log(this.albums[index].rating)
+    this.albums[index].rating = newRating;
+    console.log(this.albums[index].rating)
   }
 }

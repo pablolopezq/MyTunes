@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { AlbumsDataSource, AlbumsItem } from './albums-datasource';
 import { AlbumsService } from "../core/albums.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-albums',
@@ -17,8 +18,8 @@ export class AlbumsComponent implements AfterViewInit, OnInit {
   dataSource: AlbumsDataSource;
   service : AlbumsService = new AlbumsService();
 
+  constructor(public router: Router){}
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'artist', 'price'];
 
   ngOnInit() {
@@ -36,5 +37,9 @@ export class AlbumsComponent implements AfterViewInit, OnInit {
     this.ngOnInit()
     this.ngAfterViewInit()
     alert(`Album ${row.name} was bought`)
+  }
+
+  selectDetail(row){
+    this.router.navigate([`albums/${row.id}`])
   }
 }

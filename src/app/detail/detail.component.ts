@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { AlbumsService } from "../core/albums.service";
@@ -35,6 +35,7 @@ export class DetailComponent implements OnInit {
   service : AlbumsService;
   album : Album;
   songs: Song[];
+  isBought: boolean;
 
   constructor(private breakpointObserver: BreakpointObserver, service : AlbumsService, private route : ActivatedRoute) {
     this.service = service;
@@ -44,9 +45,17 @@ export class DetailComponent implements OnInit {
     let id = +this.route.snapshot.paramMap.get('id');
     this.album = this.service.getAlbumById(id)
     this.songs = this.service.getAlbumSongs(id);
+    this.isBought = this.service.getPurchasedList().includes(id)
   }
-  
+
   onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
-    
+    this.service.setAlbumRating(this.album.id, $event.newValue)
+    this.ngOnInit()
+  }
+
+  toggle() {
+    this.service.togglePurchase(this.album.id);
+    this.ngOnInit()
+    alert(`Album ${this.album.name} was bought`)
   }
 }

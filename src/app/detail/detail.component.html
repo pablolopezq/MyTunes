@@ -19,10 +19,10 @@
           <div *ngIf="card.title=='Canciones'"><app-songs [id]="album.id"></app-songs></div>
           <div *ngIf="card.title=='Imagen y rating'">
             <img src="{{album.img}}" width="300"/>
-            <button mat-raised-button>Precio: {{album.price}}</button>
+            <button mat-raised-button [disabled]="isBought" (click)="toggle()">Precio: {{album.price}}</button>
             <div>Lanzado en {{album.date}}</div>
             <div>Genero: {{album.genre}}</div>
-            <star-rating value="5" totalstars="5" checkedcolor="gold" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+            <star-rating value={{album.rating}} totalstars="5" checkedcolor="gold" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
           </div>
           <div *ngIf="card.title=='Descripcion'">{{album.description}}</div>
         </mat-card-content>
