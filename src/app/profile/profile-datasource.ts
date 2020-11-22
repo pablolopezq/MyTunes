@@ -3,8 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Album } from "../models/album";
-import { purchasedAlbums, allAlbums } from "../mocks/albums";
+import { AlbumsService } from '../core/albums.service';
 
 // TODO: Replace this with your own data model type
 export interface ProfileItem {
@@ -14,25 +13,22 @@ export interface ProfileItem {
   duration: number;
 }
 
-// TODO: replace this with real data from your application
-
-const EXAMPLE_DATA: ProfileItem[] = allAlbums.filter(a => purchasedAlbums.includes(a.id)).map(element => {
-  let d = element.songs.reduce((a,b)=>a+(b['duration']||0), 0)
-  return {name: element.name, id: element.id, artist: element.artist, duration: d}
-});;
-
 /**
  * Data source for the Profile view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
 export class ProfileDataSource extends DataSource<ProfileItem> {
-  data: ProfileItem[] = EXAMPLE_DATA;
+  data: ProfileItem[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(albumService : AlbumsService) {
     super();
+    this.data = albumService.getPurchased().map(element => {
+      let d = element.songs.reduce((a,b)=>a+(b['duration']||0), 0)
+      return {name: element.name, id: element.id, artist: element.artist, duration: d}
+    });
   }
 
   /**

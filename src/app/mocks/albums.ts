@@ -9,4 +9,4 @@ export const allAlbums : Array<Album> = [
     { id: 6, name: "Contrareloj", artist: "Enanitos Verdes", price: 200, genre: "Rock en espanol", rating: 3, date: "01/01/2020", description: "Rock album by Enanitos Verdes", img: "", songs: [{id: 1, name: "Song", artist: "Enanitos Verdes", price: 50, rating: 3, duration: 180}] },
 ]
 
-export const purchasedAlbums : Array<number> = [1,3,5,6]
+export const purchasedAlbums : Array<number> = [1,3,6]

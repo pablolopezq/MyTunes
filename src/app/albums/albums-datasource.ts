@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { allAlbums, purchasedAlbums } from "../mocks/albums";
+import { AlbumsService } from "../core/albums.service";
 
 export interface AlbumsItem {
   id: number;
@@ -13,24 +13,22 @@ export interface AlbumsItem {
   isBought: boolean;
 }
 
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: AlbumsItem[] = allAlbums.map(element => {
-  let bought = purchasedAlbums.includes(element.id)
-  return {id: element.id, name: element.name, artist: element.artist, price: element.price, isBought: bought}
-});
-
 /**
  * Data source for the Albums view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
 export class AlbumsDataSource extends DataSource<AlbumsItem> {
-  data: AlbumsItem[] = EXAMPLE_DATA;
+  data: AlbumsItem[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(albumService : AlbumsService) {
     super();
+    this.data = albumService.getAlbums().map(element => {
+      let bought = albumService.getPurchasedList().includes(element.id)
+      return {id: element.id, name: element.name, artist: element.artist, price: element.price, isBought: bought}
+    });
   }
 
   /**

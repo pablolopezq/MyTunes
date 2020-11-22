@@ -16,11 +16,11 @@ const routes: Routes = [
     component: AlbumsComponent
   },
   {
-    path: 'profile',
+    path: 'albums',
     component: ProfileComponent
   },
   {
-    path: 'detail/:id',
+    path: 'albums/:id',
     component: DetailComponent
   },
   {
