@@ -20,6 +20,7 @@ import { NavComponent } from './nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { SongsComponent } from './songs/songs.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatListModule } from '@angular/material/list';
     ProfileComponent,
     DetailComponent,
     AlbumsComponent,
-    NavComponent
+    NavComponent,
+    SongsComponent
   ],
   imports: [
     BrowserModule,

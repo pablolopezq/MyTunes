@@ -16,18 +16,16 @@ export class DetailComponent implements OnInit {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Imagen y rating', cols: 1, rows: 3, },
+          { title: 'Descripcion', cols: 3, rows: 1 },
+          { title: 'Canciones', cols: 3, rows: 2 },
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { title: 'Imagen y rating', cols: 1, rows: 3, img: this.album.img },
+        { title: 'Descripcion', cols: 3, rows: 1, description: this.album.description },
+        { title: 'Canciones', cols: 3, rows: 2 },
       ];
     })
   );
@@ -42,6 +40,5 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
     this.album = this.service.getAlbumById(id)
-    console.log(this.album)
   }
 }
