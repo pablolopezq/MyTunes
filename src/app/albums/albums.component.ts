@@ -35,5 +35,6 @@ export class AlbumsComponent implements AfterViewInit, OnInit {
     this.service.togglePurchase(row.id);
     this.ngOnInit()
     this.ngAfterViewInit()
+    alert(`Album ${row.name} was bought`)
   }
 }

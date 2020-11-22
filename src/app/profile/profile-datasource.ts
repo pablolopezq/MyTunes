@@ -26,7 +26,7 @@ export class ProfileDataSource extends DataSource<ProfileItem> {
   constructor(albumService : AlbumsService) {
     super();
     this.data = albumService.getPurchased().map(element => {
-      let d = element.songs.reduce((a,b)=>a+(b['duration']||0), 0)
+      let d = albumService.getAlbumDuration(element.id)
       return {name: element.name, id: element.id, artist: element.artist, duration: d}
     });
   }

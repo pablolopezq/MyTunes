@@ -3,19 +3,18 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { AlbumsService } from '../core/albums.service';
 
 // TODO: Replace this with your own data model type
 export interface SongsItem {
-  name: string;
   id: number;
+  name: string;
+  artist: string;
+  price: number;
+  duration: number;
+  rating: number;
+  isBought: boolean;
 }
-
-// TODO: replace this with real data from your application
-const EXAMPLE_DATA: SongsItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-];
 
 /**
  * Data source for the Songs view. This class should
@@ -23,12 +22,16 @@ const EXAMPLE_DATA: SongsItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class SongsDataSource extends DataSource<SongsItem> {
-  data: SongsItem[] = EXAMPLE_DATA;
+  data: SongsItem[];
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(id : number, albumService : AlbumsService) {
     super();
+    this.data = albumService.getAlbumSongs(id).map(element => {
+      let bought = albumService.getPurchasedSongs().includes(element.id)
+      return {id: element.id, name: element.name, artist: element.artist, price: element.price, isBought: bought, duration: element.duration, rating: element.rating}
+    });
   }
 
   /**

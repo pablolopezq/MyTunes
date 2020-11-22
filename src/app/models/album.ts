@@ -1,4 +1,4 @@
-import { Songs } from "./songs";
+import { Song } from "./song";
 
 export class Album {
     id: number;
@@ -10,5 +10,4 @@ export class Album {
     date: string;
     description: string;
     img: string;
-    songs: Songs[]
 }

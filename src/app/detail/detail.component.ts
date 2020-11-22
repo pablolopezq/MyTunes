@@ -4,6 +4,8 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { AlbumsService } from "../core/albums.service";
 import { Album } from "../models/album";
 import { ActivatedRoute } from '@angular/router';
+import { StarRatingComponent } from 'ng-starrating';
+import { Song } from '../models/song';
 
 @Component({
   selector: 'app-detail',
@@ -23,8 +25,8 @@ export class DetailComponent implements OnInit {
       }
 
       return [
-        { title: 'Imagen y rating', cols: 1, rows: 3, img: this.album.img },
-        { title: 'Descripcion', cols: 3, rows: 1, description: this.album.description },
+        { title: 'Imagen y rating', cols: 1, rows: 3 },
+        { title: 'Descripcion', cols: 3, rows: 1 },
         { title: 'Canciones', cols: 3, rows: 2 },
       ];
     })
@@ -32,6 +34,7 @@ export class DetailComponent implements OnInit {
 
   service : AlbumsService;
   album : Album;
+  songs: Song[];
 
   constructor(private breakpointObserver: BreakpointObserver, service : AlbumsService, private route : ActivatedRoute) {
     this.service = service;
@@ -40,5 +43,10 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
     this.album = this.service.getAlbumById(id)
+    this.songs = this.service.getAlbumSongs(id);
+  }
+  
+  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+    
   }
 }
