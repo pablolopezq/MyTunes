@@ -22,6 +22,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { SongsComponent } from './songs/songs.component';
 import { RatingModule } from 'ng-starrating';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { RatingModule } from 'ng-starrating';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    RatingModule
+    RatingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -31,6 +31,6 @@ export const allSongs : Array<Song> = [
     {id: 18, name: "Luchas de Poder", artist: "Enanitos Verdes", price: 50, duration: 180, rating: 3, album: 6}
 ]
 
-export const purchasedAlbums : Array<number> = [1,3,6]
+export const purchasedAlbums : Array<number> = [1,3]
 
 export const purchasedSongs : Array<number> = []
